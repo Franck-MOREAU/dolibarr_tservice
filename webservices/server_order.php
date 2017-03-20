@@ -915,6 +915,7 @@ function updateOrder($authentication,$order)
 
 			if (isset($order['status']))
 			{
+				if($order['status'] == -2) $result=$object->delete($fuser);
 				if ($order['status'] == -1) $result=$object->cancel($fuser);
 				if ($order['status'] == 1)
 				{
