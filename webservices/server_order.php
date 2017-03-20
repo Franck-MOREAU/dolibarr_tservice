@@ -681,6 +681,7 @@ function createOrder($authentication,$order)
 		$newobject->socid=$order['thirdparty_id'];
 		$newobject->type=$order['type'];
 		$newobject->ref_ext=$order['ref_ext'];
+		$newobject->ref_client=$order['ref_ext'];
 		$newobject->date=dol_stringtotime($order['date'],'dayrfc');
 		$newobject->date_lim_reglement=dol_stringtotime($order['date_due'],'dayrfc');
 		$newobject->note_private=$order['note_private'];
@@ -923,7 +924,7 @@ function updateOrder($authentication,$order)
 						// Define output language
 						$outputlangs = $langs;
 						$order->generateDocument($order->modelpdf, $outputlangs);
-					
+
 					}
 				}
 				if ($order['status'] == 0)  $result=$object->set_reopen($fuser);
